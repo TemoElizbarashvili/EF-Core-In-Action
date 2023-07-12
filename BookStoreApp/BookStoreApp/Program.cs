@@ -1,7 +1,17 @@
+using DataLayer.EFCode;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddDbContext<EFCoreContext>(opts =>
+{
+    opts.UseSqlServer(builder.Configuration.GetConnectionString("EFCoreConnection"),
+        b => b.MigrationsAssembly("DataLayer"));
+});
 
 var app = builder.Build();
 

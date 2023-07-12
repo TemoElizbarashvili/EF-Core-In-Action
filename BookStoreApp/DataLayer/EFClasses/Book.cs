@@ -1,4 +1,4 @@
-﻿namespace BookStoreApp.Models
+﻿namespace DataLayer.EFClasses
 {
     public class Book
     {
@@ -13,6 +13,9 @@
 
         //relationships
 
-
+        public PriceOffer Promotion { get; set; } = new();
+        public ICollection<Review>? Reviews { get; set; } 
+        public ICollection<Tag>? Tags { get; set; }
+        public ICollection<BookAuthor>? AuthorsLink { get; set; }
     }
 }
